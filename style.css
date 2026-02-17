@@ -1,12 +1,12 @@
 :root {
   color-scheme: light;
-  --bg: #fff1f2;
+  --bg: #f4f6ff;
   --card: #ffffff;
-  --text: #3a1217;
-  --muted: #7f1d1d;
-  --accent: #dc2626;
-  --accent-dark: #991b1b;
-  --border: #fecdd3;
+  --text: #20243a;
+  --muted: #5f678b;
+  --accent: #4f46e5;
+  --accent-dark: #3730a3;
+  --border: #dbe1ff;
 }
 
 * {
@@ -17,56 +17,20 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(145deg, #ffe4e6, var(--bg));
+  background: linear-gradient(145deg, #eef1ff, var(--bg));
   color: var(--text);
-  display: flex;
-  flex-direction: column;
-}
-
-.shell {
-  width: min(760px, 100%);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.site-header {
-  border-bottom: 1px solid var(--border);
-  background: #fff5f5;
-  box-shadow: 0 2px 10px rgba(127, 29, 29, 0.08);
-}
-
-.header-inner {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.brand {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.tagline {
-  margin: 0.3rem 0 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-main {
-  flex: 1;
   display: grid;
-  align-items: start;
-  padding: 1.5rem 0;
+  place-items: center;
+  padding: 1rem;
 }
 
 .app {
-  width: 100%;
+  width: min(680px, 100%);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 12px 28px rgba(220, 38, 38, 0.12);
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.1);
 }
 
 h1 {
@@ -87,13 +51,13 @@ h1 {
 input {
   flex: 1;
   padding: 0.75rem 0.9rem;
-  border: 1px solid #fda4af;
+  border: 1px solid #c8d0ff;
   border-radius: 10px;
   font-size: 1rem;
 }
 
 input:focus {
-  outline: 2px solid rgba(220, 38, 38, 0.3);
+  outline: 2px solid rgba(79, 70, 229, 0.35);
   border-color: var(--accent);
 }
 
@@ -145,30 +109,6 @@ button:hover {
 
 .error {
   color: #b42318;
-}
-
-.site-footer {
-  border-top: 1px solid var(--border);
-  background: #fff5f5;
-}
-
-.footer-inner {
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  font-size: 0.92rem;
-}
-
-.footer-inner p {
-  margin: 0;
-}
-
-.footer-note {
-  font-style: italic;
 }
 
 .sr-only {
