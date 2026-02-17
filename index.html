@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Dictionary</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Simple Dictionary</h1>
+    <p class="subtitle">Search any English word and see its meaning.</p>
+
+    <form id="search-form" class="search" autocomplete="off">
+      <label for="word-input" class="sr-only">Enter a word</label>
+      <input id="word-input" type="text" placeholder="Type a word..." required />
+      <button type="submit">Search</button>
+    </form>
+
+    <section id="result" class="result" aria-live="polite">
+      <p class="hint">Try words like <strong>hello</strong>, <strong>dream</strong>, or <strong>learn</strong>.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
