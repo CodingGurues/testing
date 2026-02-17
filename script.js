@@ -8,6 +8,7 @@ function showMessage(text, isError = false) {
 
 function renderEntry(entry) {
   const meanings = (entry.meanings || []).slice(0, 3);
+  const phonetic = entry.phonetic || entry.phonetics?.find((item) => item.text)?.text || 'No phonetic available';
 
   const meaningsHtml = meanings
     .map((meaning) => {
@@ -16,7 +17,9 @@ function renderEntry(entry) {
         .map((item) => `<li>${item.definition}</li>`)
         .join('');
 
-      if (!definitions) return '';
+      if (!definitions) {
+        return '';
+      }
 
       return `
         <h3 class="part">${meaning.partOfSpeech}</h3>
@@ -27,7 +30,7 @@ function renderEntry(entry) {
 
   result.innerHTML = `
     <h2 class="word">${entry.word}</h2>
-    <p class="phonetic">${entry.phonetic || 'No phonetic available'}</p>
+    <p class="phonetic">${phonetic}</p>
     ${meaningsHtml || '<p class="message">No definitions found.</p>'}
   `;
 }
