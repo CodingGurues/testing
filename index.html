@@ -3,56 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Dictionary</title>
+  <title>Lumen Dictionary</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#" aria-label="Simple Dictionary home">📚 Simple Dictionary</a>
-      <p class="tagline">Fast word lookups in your browser</p>
+      <a class="brand" href="#" aria-label="Lumen Dictionary home">✨ Lumen Dictionary</a>
+      <div class="header-meta">
+        <p class="tagline">Clear definitions with a fresh, modern theme.</p>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+          Switch theme
+        </button>
+      </div>
     </div>
   </header>
 
   <main class="shell page-content">
     <section class="app">
-      <h1>Simple Dictionary</h1>
-      <p class="subtitle">Search any English word and see its meaning.</p>
+      <h1>Look up any English word</h1>
+      <p class="subtitle">Get definitions, parts of speech, and phonetics in one clean view.</p>
 
       <form id="search-form" class="search" autocomplete="off">
         <label for="word-input" class="sr-only">Enter a word</label>
-        <input id="word-input" type="text" placeholder="Type a word..." required />
+        <input id="word-input" type="text" placeholder="Try: curious, vivid, ocean..." required />
         <button type="submit">Search</button>
       </form>
 
       <section id="result" class="result" aria-live="polite">
-        <p class="hint">Try words like <strong>hello</strong>, <strong>dream</strong>, or <strong>learn</strong>.</p>
+        <p class="hint">Start by searching a word to see its definitions.</p>
       </section>
     </section>
 
-    <section class="content-card" aria-label="How to use this website">
-      <h2>How to use</h2>
-      <ol class="content-list">
-        <li>Type a word in the search box above.</li>
-        <li>Click <strong>Search</strong> to fetch meanings instantly.</li>
-        <li>Read definitions, part of speech, and phonetic hints.</li>
-      </ol>
-    </section>
-
-    <section class="content-card" aria-label="Features">
-      <h2>Why this dictionary is useful</h2>
+    <section class="content-card" aria-label="Highlights">
+      <h2>What changed</h2>
       <div class="feature-grid">
         <article class="feature-item">
-          <h3>⚡ Quick Lookup</h3>
-          <p>Get common definitions in seconds directly in your browser.</p>
+          <h3>🎨 New Color Scheme</h3>
+          <p>A calm blue-violet palette with better contrast and readability.</p>
         </article>
         <article class="feature-item">
-          <h3>🧠 Learning Friendly</h3>
-          <p>Great for students, writers, and anyone expanding vocabulary.</p>
+          <h3>🌓 Theme Toggle</h3>
+          <p>Switch instantly between light and dark mode preferences.</p>
         </article>
         <article class="feature-item">
-          <h3>🔒 No Backend Needed</h3>
-          <p>Built with pure HTML, CSS, and JavaScript only.</p>
+          <h3>📖 Cleaner Results</h3>
+          <p>Definitions are grouped and easy to scan on all screen sizes.</p>
         </article>
       </div>
     </section>
@@ -60,8 +56,8 @@
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <p>Made with HTML, CSS, and JavaScript only.</p>
-      <p class="footer-note">Dictionary data by DictionaryAPI.</p>
+      <p>Built with plain HTML, CSS, and JavaScript.</p>
+      <p class="footer-note">Data source: DictionaryAPI.dev</p>
     </div>
   </footer>
 

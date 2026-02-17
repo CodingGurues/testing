@@ -1,6 +1,9 @@
 const form = document.getElementById('search-form');
 const input = document.getElementById('word-input');
 const result = document.getElementById('result');
+const themeToggle = document.getElementById('theme-toggle');
+
+const THEME_KEY = 'dictionary-theme';
 
 function showMessage(text, isError = false) {
   result.innerHTML = `<p class="message ${isError ? 'error' : ''}">${text}</p>`;
@@ -8,6 +11,7 @@ function showMessage(text, isError = false) {
 
 function renderEntry(entry) {
   const meanings = (entry.meanings || []).slice(0, 3);
+  const phonetic = entry.phonetic || entry.phonetics?.find((item) => item.text)?.text || 'No phonetic available';
 
   const meaningsHtml = meanings
     .map((meaning) => {
@@ -16,7 +20,9 @@ function renderEntry(entry) {
         .map((item) => `<li>${item.definition}</li>`)
         .join('');
 
-      if (!definitions) return '';
+      if (!definitions) {
+        return '';
+      }
 
       return `
         <h3 class="part">${meaning.partOfSpeech}</h3>
@@ -27,7 +33,7 @@ function renderEntry(entry) {
 
   result.innerHTML = `
     <h2 class="word">${entry.word}</h2>
-    <p class="phonetic">${entry.phonetic || 'No phonetic available'}</p>
+    <p class="phonetic">${phonetic}</p>
     ${meaningsHtml || '<p class="message">No definitions found.</p>'}
   `;
 }
@@ -54,6 +60,25 @@ async function searchWord(word) {
   }
 }
 
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(THEME_KEY, theme);
+  themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+}
+
+function setupTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+  applyTheme(initialTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  });
+}
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const word = input.value.trim();
@@ -65,3 +90,5 @@ form.addEventListener('submit', (event) => {
 
   searchWord(word);
 });
+
+setupTheme();
