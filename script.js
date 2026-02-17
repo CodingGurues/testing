@@ -1,6 +1,9 @@
 const form = document.getElementById('search-form');
 const input = document.getElementById('word-input');
 const result = document.getElementById('result');
+const themeToggle = document.getElementById('theme-toggle');
+
+const THEME_KEY = 'dictionary-theme';
 
 function showMessage(text, isError = false) {
   result.innerHTML = `<p class="message ${isError ? 'error' : ''}">${text}</p>`;
@@ -57,6 +60,25 @@ async function searchWord(word) {
   }
 }
 
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(THEME_KEY, theme);
+  themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+}
+
+function setupTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+  applyTheme(initialTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  });
+}
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   const word = input.value.trim();
@@ -68,3 +90,5 @@ form.addEventListener('submit', (event) => {
 
   searchWord(word);
 });
+
+setupTheme();
